@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Settings extends StatelessWidget
+class Console extends StatelessWidget
 {
-  const Settings({super.key});
+  const Console({super.key});
 
   @override
   Widget build(BuildContext context) {

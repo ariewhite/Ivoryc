@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'settings.dart';
+import 'package:tester/pages/settings.dart';
 
 class Menu extends StatelessWidget
 {
@@ -17,43 +17,8 @@ class Menu extends StatelessWidget
         children: [
           Positioned.fill(
             child: Image.asset(
-              'assets/images/bg1.jpg', 
+              'assets/images/bg2.png', 
               fit: BoxFit.cover,
-            ),
-          ),
-          Positioned(
-            bottom: 50,
-            left: 0,
-            right: 0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.settings),
-                  onPressed: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Settings()),
-                    );
-                  },
-                  color: Colors.white,
-                  iconSize: 99,
-                ),
-                const SizedBox(width: 40,),
-                IconButton(
-                  icon: const Icon(Icons.play_arrow_rounded),
-                  onPressed: () {},
-                  color: const Color.fromARGB(255, 0, 255, 234),
-                  iconSize: 99,
-                ),
-                const SizedBox(width: 40,),
-                IconButton(
-                  icon: const Icon(Icons.update),
-                  onPressed: () {},
-                  color: Colors.white,
-                  iconSize: 99,
-                ),
-              ],
             ),
           ),
 

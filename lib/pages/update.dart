@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Settings extends StatelessWidget
+class Update extends StatelessWidget
 {
-  const Settings({super.key});
+  const Update({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class Settings extends StatelessWidget
         ),
         const Center(
           child: Text(
-            "Тут будет консоль когда нибудь 😁",
+            'Скоро тут будет центр обновлений 😶‍🌫️',
             style: TextStyle(
               color: Colors.white,
               fontSize: 36,

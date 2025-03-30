@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  convex_bottom_bar: ^3.0.0
   flutter:
     sdk: flutter
 
@@ -61,6 +62,12 @@ flutter:
     - assets/images/bg1.jpg
     - assets/images/tokyo.jpg
     - assets/images/bg2.png
+    - assets/icons/play_menu.png
+    - assets/icons/settins.png
+    - assets/icons/terminal.png
+    - assets/icons/update.png
+    - assets/icons/other.png
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:
@@ -89,6 +96,12 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+  fonts:
+    - family: Cascadia
+      fonts:
+        - asset: assets/fonts/CascadiaMono.ttf
+          weight: 700 
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

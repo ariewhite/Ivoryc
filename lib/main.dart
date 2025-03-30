@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:tester/pages/console.dart';
+import 'package:tester/pages/null.dart';
 import 'package:tester/pages/settings.dart';
-import 'pages/menu.dart';
-import 'pages/cg.dart';
+import 'package:tester/pages/menu.dart';
+import 'package:tester/pages/update.dart';
 import 'config.dart';
 
-void main() async 
-{
-  WidgetsFlutterBinding.ensureInitialized(); // Initialize Flutter bindings
-
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await AppConfig.instance.readHWSpecs();
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget
-{
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
@@ -21,102 +20,103 @@ class MyApp extends StatelessWidget
     return MaterialApp(
       title: 'Minecraft Launcher',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.cyan,
-      ),
-      home: const MainPage(),
+      theme: ThemeData(primarySwatch: Colors.cyan),
+      home: BottomNavigation(),
     );
   }
 }
 
-
-class MainPage extends StatefulWidget
-{
-  const MainPage({super.key});
-
+class BottomNavigation extends StatefulWidget{
   @override
-  State<MainPage> createState() => _MainPageState();
+  _BottomNavigationState createState() => _BottomNavigationState();
 }
 
-class _MainPageState extends State<MainPage>
-{
-  int _currentIndex = 0;
+class _BottomNavigationState extends State<BottomNavigation> {
+  int _selectedIndex = 2;
 
-  final List<Widget> _pages = const [
-    MainPage(),
-    Settings(),
-    ];
+  final List<Widget> _pages = [
+    const Console(),
+    const Update(),
+    const Menu(),
+    const Settings(),
+    const EmptyPage()
+  ];
 
-    void _changePage(int index)
-    {
-      setState(() {
-        _currentIndex = index;
-      });
-    }
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: Image.asset(
-              'assets/images/bg1.jpg', 
-              fit: BoxFit.cover,
+      extendBody: true,
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
+        child: BottomNavigationBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+          type: BottomNavigationBarType.fixed,
+          showSelectedLabels: true,
+          showUnselectedLabels: false,
+          selectedItemColor: Colors.blueAccent,
+          unselectedItemColor: Colors.white70,
+          items: [
+            BottomNavigationBarItem(
+              icon: Image.asset(
+                'assets/icons/terminal.png',
+                height: 30,
+                color: _selectedIndex == 0 ? Colors.blueAccent : Colors.white70,
+              ),
+              label: 'Console',
             ),
-          ),
-          Positioned(
-            bottom: 50,
-            left: 0,
-            right: 0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.settings),
-                  onPressed: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Settings()),
-                    );
-                  },
-                  color: Colors.white,
-                  iconSize: 99,
-                ),
-                const SizedBox(width: 40,),
-                IconButton(
-                  icon: const Icon(Icons.play_arrow_rounded),
-                  onPressed: () {},
-                  color: const Color.fromARGB(255, 0, 255, 234),
-                  iconSize: 99,
-                ),
-                const SizedBox(width: 40,),
-                IconButton(
-                  icon: const Icon(Icons.update),
-                  onPressed: () {},
-                  color: Colors.white,
-                  iconSize: 99,
-                ),
-              ],
+            BottomNavigationBarItem(
+              icon: Image.asset(
+                'assets/icons/update.png',
+                height: 30,
+                color: _selectedIndex == 1 ? Colors.blueAccent : Colors.white70,
+              ),
+              label: 'Update',
             ),
-          ),
-
-          const Positioned(
-            bottom: 250,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: ElevatedButton(
-                onPressed: null, 
-                child: Text(
-                  "Play",
-                  style: TextStyle(
-                    color: Colors.white
-                  ),
-                )),
-            )
-          )
-        ],    
+            BottomNavigationBarItem(
+              icon: Image.asset(
+                'assets/icons/play_menu.png',
+                height: 30,
+                color: _selectedIndex == 2? 
+                  Colors.blueAccent:
+                  Colors.white70,
+              ),
+              label: 'Play',
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset(
+                'assets/icons/settins.png',
+                height: 30,
+                color: _selectedIndex == 3? 
+                  Colors.blueAccent:
+                  Colors.white70,
+              ),
+              label: 'Settings',
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset(
+                'assets/icons/other.png',
+                height: 30,
+                color: _selectedIndex == 4? 
+                  Colors.blueAccent:
+                  Colors.white70,
+              ),
+              label: 'Other',
+            ),
+          ],
+        )
       ),
     );
   }
