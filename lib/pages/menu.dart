@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tester/pages/settings.dart';
+// import 'package:tester/pages/settings.dart';
 
 class Menu extends StatelessWidget
 {
