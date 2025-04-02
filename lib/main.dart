@@ -8,7 +8,7 @@ import 'config.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await AppConfig.instance.readHWSpecs();
+  await AppConfig.instance.initialize();
   runApp(const MyApp());
 }
 
