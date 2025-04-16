@@ -9,8 +9,8 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  double minRam = 2;
-  double maxRam = 4;
+  double minRam = 4;
+  double maxRam = 16;
   String resolution = "1280x720";
   String javaPath = "";
   String javaArgs = "";
