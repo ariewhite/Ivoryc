@@ -1,7 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
+
 import 'logger_wrapper.dart';
+import 'package:tester/pages/console.dart';
+import 'package:path_provider/path_provider.dart';
+
 
 class AppConfig 
 {
@@ -16,6 +20,10 @@ class AppConfig
   String appVersion  = "0.0.0";
   late String gAppVersion;
   late String gPackVersion;
+
+  late String minecraftVersion;
+  final minecraftDirs = getApplicationDocumentsDirectory();
+  // late String javaVersion;
   
   // link to global configuration
   late Uri globalConfigUrl;
@@ -76,12 +84,13 @@ class AppConfig
 
     appVersion  = data['launcher']['version'];
     packVersion = data['modpack']['version'];
+    minecraftVersion = data['minecraft']['version'];
 
     globalConfigUrl = Uri.parse(data['settings']['global_url']); 
 
+
     AppLogger().i('LPackVer: $packVersion');
     AppLogger().i('LVersion: $appVersion');
-
     return true;
   }
 

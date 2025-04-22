@@ -15,6 +15,7 @@ class _SettingsState extends State<Settings> {
   double? maxRam;
   double? selectedMaxRam;
   RangeValues _ramValues = const RangeValues(4, 8);
+
   String resolution = "1280x720";
   String javaPath = "";
   String javaArgs = "";
