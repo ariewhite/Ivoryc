@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:tester/pages/console.dart';
+import 'logger_wrapper.dart';
 
 class AppConfig 
 {
@@ -17,10 +17,11 @@ class AppConfig
   late String gAppVersion;
   late String gPackVersion;
   
+  // link to global configuration
   late Uri globalConfigUrl;
 
   // --------------- hardware specs ---------------
-  late int? ramSizeBytes; // ram size in bytes
+  late int?    ramSize;   // ram size in gb
   late String? cpuName;   // cpu model name
   late String? gpuName;   // gpu name
 
@@ -59,6 +60,7 @@ class AppConfig
 
     return int.parse(result.stdout.toString().trim());
   }
+
   // ------------- read app json ---------------
   Future<bool> readLocalAppJson() async 
   {
@@ -68,7 +70,7 @@ class AppConfig
     final data = await readJsonFile(localPath);
 
     if (data['launcher'] == null || data['launcher']['version'] == null) {
-      print('Invalid JSON structure - missing launcher version');
+      AppLogger().e('Invalid JSON structure - missing launcher version');
       return false;
     }
 
@@ -77,8 +79,8 @@ class AppConfig
 
     globalConfigUrl = Uri.parse(data['settings']['global_url']); 
 
-    print('LPackVer: $packVersion');
-    print('LVersion: $appVersion');
+    AppLogger().i('LPackVer: $packVersion');
+    AppLogger().i('LVersion: $appVersion');
 
     return true;
   }
@@ -90,31 +92,22 @@ class AppConfig
     final globalJson = jsonDecode(await global.transform(utf8.decoder).join());
 
     if (globalJson['launcher'] == null || globalJson['launcher']['version'] == null) {
-      print('Invalid JSON structure - missing launcher version');
+      AppLogger().e('Invalid JSON structure - missing launcher version');
       return false;
     }
 
     gPackVersion = globalJson['modpack']['version'];
     gAppVersion  = globalJson['launcher']['version'];
 
-    print("GPackVer: $gPackVersion");
-    print("GVersion: $gAppVersion");
+    AppLogger().i("GPackVer: $gPackVersion");
+    AppLogger().i("GVersion: $gAppVersion");
   
     return true;
   }
 
   // --------------- getters     ---------------
 
-  int? getRamSizeBytes() => ramSizeBytes;
-  double? getRamSizeGB()
-  {
-    if (ramSizeBytes != null && ramSizeBytes != 0)
-    {
-      return ramSizeBytes!/(1024*1024*1024);
-    } else {
-      return 0;
-    }
-  }
+  int? getRamSize() => ramSize;
   String? getCpuName() => cpuName;
   String? getGpuName() => gpuName;
 
@@ -124,7 +117,11 @@ class AppConfig
   {
     cpuName = await readCpuName();
     gpuName = await readGpuName();
-    ramSizeBytes = await readRam();
+    ramSize = await readRam();
+
+    AppLogger().i("cpu: $cpuName");
+    AppLogger().i("gpu: $gpuName");
+    AppLogger().i("ramSize: $ramSize()");
   }
 
   // ---------------     json     ---------------

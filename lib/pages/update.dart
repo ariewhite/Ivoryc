@@ -24,7 +24,7 @@ class Update extends StatelessWidget
               fontWeight: FontWeight.normal,
             ),
           ),
-        )
+        ), 
       ],
     );
   }

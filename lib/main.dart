@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tester/logger_wrapper.dart';
 import 'package:tester/pages/console.dart';
 import 'package:tester/pages/null.dart';
 import 'package:tester/pages/settings.dart';
@@ -7,8 +8,11 @@ import 'package:tester/pages/update.dart';
 import 'config.dart';
 
 void main() async {
+  await AppLogger().init();
   WidgetsFlutterBinding.ensureInitialized();
   await AppConfig.instance.initialize();
+  
+  AppLogger().i("Launcher started");
   runApp(const MyApp());
 }
 
@@ -18,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Minecraft Launcher',
+      title: 'Ivoryc',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.cyan),
       home: BottomNavigation(),
