@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:logger/logger.dart';
 
@@ -16,6 +17,7 @@ class AppLogger {
   Future<void> init() async {
     final dir = await getApplicationDocumentsDirectory();
     _logFile = File('${dir.path}/log.log');
+    debugPrint('log path: $_logFile');
 
     if (!await _logFile.exists()) {
       await _logFile.create(recursive: true);

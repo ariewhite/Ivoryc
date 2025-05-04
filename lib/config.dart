@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-
 import 'logger_wrapper.dart';
 import 'package:tester/pages/console.dart';
 import 'package:path_provider/path_provider.dart';
