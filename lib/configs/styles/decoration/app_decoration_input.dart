@@ -31,6 +31,8 @@ class _Input {
           inherit: false,
           fontSize: kIsWeb ? -1.0 : 0.0,
           height: kIsWeb ? -1.0 : 0.0,
+          fontFamily: 'Cascadia',
+          fontWeight: FontWeight.bold,
         ),
         floatingLabelStyle: AppTextStyles.caption2().copyWith(
           color: isValid ? AppColors.black : AppColors.red,

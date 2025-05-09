@@ -9,11 +9,12 @@ import 'package:tester/configs/styles/text_styles/app_text_styles.dart';
 
 part 'app_decoration_button.dart';
 part 'app_decoration_input.dart';
+part 'app_decoration_elevated_button.dart';
 
 class AppDecoration {
   const AppDecoration._();
 
   static const _Button button = _Button();
   static const _Input input = _Input();
-
+  static const _ElevatedButtonStyle elevated = _ElevatedButtonStyle();
 }
