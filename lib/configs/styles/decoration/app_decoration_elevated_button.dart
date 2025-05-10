@@ -47,5 +47,24 @@ class _ElevatedButtonStyle
       ),
     );
   }
+
+  ButtonStyle text() {
+    return ButtonStyle(
+      backgroundColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.hovered)) return AppColors.gray;
+        if (states.contains(WidgetState.disabled)) return AppColors.white;
+        return AppColors.white;
+      }),
+      foregroundColor: WidgetStateProperty.all(Colors.black54),
+      minimumSize: WidgetStateProperty.all(const Size(double.infinity, 50)),
+      padding: WidgetStateProperty.all(const EdgeInsets.symmetric(vertical: 14)),
+      shape: WidgetStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+          side: const BorderSide(color: AppColors.white, width: 2),
+        ),
+      ),
+    );
+  }
  
 }
