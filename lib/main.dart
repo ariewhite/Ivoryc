@@ -129,13 +129,15 @@ import 'package:flutter/material.dart';
 import 'package:tester/pages/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main(){
+void main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((_) {
-    runApp( const MyApp());
-  });
+  await Supabase.initialize(
+    url: '', 
+    anonKey: '');
+  runApp( const MyApp());
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
