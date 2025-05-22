@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tester/config.dart';
 import 'package:tester/configs/styles/decoration/app_decoration.dart';
 import 'package:tester/configs/styles/text_styles/app_text_styles.dart';
@@ -78,6 +79,8 @@ class _LoginPageState extends State<LoginPage> {
         TextField(
           controller: _passwordController,
           obscureText: true,
+          textInputAction: TextInputAction.done,
+          onSubmitted: (_) => _auth(),
           decoration:
               AppDecoration.input.standard(isValid: true, labelText: "Пароль"),
         ),
@@ -126,6 +129,8 @@ class _LoginPageState extends State<LoginPage> {
         TextField(
           controller: _passwordController,
           obscureText: true,
+          textInputAction: TextInputAction.done,
+          onSubmitted: (value) => _auth(),
           decoration:
               AppDecoration.input.standard(isValid: true, labelText: "Пароль"),
         ),
@@ -177,6 +182,11 @@ class _LoginPageState extends State<LoginPage> {
           duration: Durations.long2,
           backgroundColor: Colors.white70,
       ),);
+
+      // Navigator.pushReplacement(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => BottomNavigation()),
+      // );
       return true; 
     } 
     on AuthException catch (e) {
