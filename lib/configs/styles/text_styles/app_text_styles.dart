@@ -125,4 +125,23 @@ class AppTextStyles {
         fontWeight: FontWeight.bold,
         fontFamily: "Cascadia",
       );
+
+  static TextStyle miniProfileNickname() => defaultStyle().copyWith(
+        fontSize: 14.5,
+        fontWeight: FontWeight.bold,
+        fontFamily: "Roboto",
+        color: Colors.white,
+        letterSpacing: 1,
+      );
+      
+  static TextStyle miniProfileTime() => miniProfileNickname().copyWith(
+        color: Colors.white70,
+        fontWeight: FontWeight.normal,
+      );
+
+  static TextStyle miniProfileTimeA() => miniProfileTime().copyWith(
+        fontSize: 9.0,
+        color: Colors.white54,
+      );
+      
 }

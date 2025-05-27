@@ -70,6 +70,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/profile_pictures/
 
 
   # To add assets to your application, add an assets section, like this:
@@ -104,6 +105,12 @@ flutter:
       fonts:
         - asset: assets/fonts/CascadiaMono.ttf
           weight: 700 
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Light.ttf
+        - asset: assets/fonts/Roboto-Medium.ttf
+        - asset: assets/fonts/Roboto-Regular.ttf
+          
 
   #
   # For details regarding fonts from package dependencies,

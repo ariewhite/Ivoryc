@@ -73,7 +73,7 @@ class MinecraftDownloader
 
   Future<void> downloadVersion({required String folderName}) async 
   {
-    print("start dowbload");
+    print("start download");
     // dir
     final dir = await getApplicationDocumentsDirectory();
     final targetDir = Directory(path.join(dir.path, folderName));

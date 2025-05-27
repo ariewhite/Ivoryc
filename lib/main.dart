@@ -7,18 +7,34 @@ import 'config.dart';
 
 
 void main() async {
-  await AppLogger().init();
   WidgetsFlutterBinding.ensureInitialized();
-  await AppConfig.instance.initialize();
+  await AppLogger().init();
+  
 
- await Supabase.initialize(
+  await Supabase.initialize(
     url: '', 
     anonKey: '');
 
-  AppLogger().i("Launcher started");
-  var user = await Supabase.instance.client.auth.getUser();
+  await AppConfig.instance.initialize();
   
-  AppLogger().i(user.user!.email.toString());
+  AppLogger().i("Launcher started");
+
+  
+  try {
+    final response = await Supabase.instance.client.auth.getUser();
+    final user = response.user;
+
+    if (user != null) {
+      AppLogger().i('User: ${user.toString()}');
+    } else {
+      AppLogger().i('No session go to login page');
+    }
+  } on AuthException catch (e) {
+    AppLogger().i('Auth error ${e.message}');
+  } catch (e, s) {
+    AppLogger().e('Error: $e\n$s');
+  }
+
   runApp(const MyApp());
 }
 

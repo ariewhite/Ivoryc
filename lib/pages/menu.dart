@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:tester/pages/settings.dart';
 import 'package:tester/config.dart';
 import 'package:tester/visual/animatedpoint.dart';
+import 'package:tester/profile/mini_profile.dart';
 
 class Menu extends StatelessWidget
 {
@@ -60,7 +60,7 @@ class Menu extends StatelessWidget
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    AppConfig.instance.packVersion,
+                    AppConfig.instance.packVersion, // pack version text
                     style: const TextStyle(
                       color: Colors.white60,
                       fontFamily: 'Cascadia',
@@ -76,6 +76,15 @@ class Menu extends StatelessWidget
                   ),
                 ],
               )  
+            ),
+          ),
+          Positioned(
+            right: 25,
+            top: 25,
+            child: MiniProfile(
+              hours: 2,
+              minutes: 20,
+              nick: AppConfig.instance.nickname,
             ),
           ),
         ],    

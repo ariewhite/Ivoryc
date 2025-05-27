@@ -4,6 +4,7 @@ import 'dart:io';
 import 'logger_wrapper.dart';
 import 'package:tester/pages/console.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 
 class AppConfig 
@@ -22,7 +23,6 @@ class AppConfig
 
   late String minecraftVersion;
   final minecraftDirs = getApplicationDocumentsDirectory();
-  // late String javaVersion;
   
   // link to global configuration
   late Uri globalConfigUrl;
@@ -31,6 +31,12 @@ class AppConfig
   late int?    ramSize;   // ram size in gb
   late String? cpuName;   // cpu model name
   late String? gpuName;   // gpu name
+
+
+  bool dbIsReaded = false;
+
+  // user vars
+  late String nickname;
 
   // ---------------  read specs    ---------------
   static Future<String?> readGpuName() async 
@@ -113,11 +119,56 @@ class AppConfig
     return true;
   }
 
+  // read db
+  Future<bool> readDataBase() async
+  {
+    try {
+      final client = Supabase.instance.client;
+
+      final userid = client.auth.currentUser!.id;
+
+      AppLogger().i('userid: $userid');
+
+      final response = await client
+        .from('UserInfo')
+        .select('nickname')
+        .eq('user_id', userid)
+        .maybeSingle();
+
+      if (response!['nickname'] != null) {
+        final usernick = response['nickname'] as String;
+
+        AppLogger().i('nickname: $usernick');
+        nickname = usernick;
+        dbIsReaded = true;
+      } else {
+        AppLogger().w('empty nick');
+      }
+
+    } on AuthException catch (e) {
+      AppLogger().i('Auth error ${e.message}');
+      return false;
+    } catch (e, s) {
+      AppLogger().i('Auth error $e\n$s');
+      return false;
+    }
+
+    return true;
+  }
+  
+
   // --------------- getters     ---------------
 
   int? getRamSize() => ramSize;
   String? getCpuName() => cpuName;
   String? getGpuName() => gpuName;
+  String getUserNick()
+  {
+    if (dbIsReaded){
+      return nickname;
+    }
+    return 'empty';
+  }
 
 
   // --------------- other methods ---------------
@@ -158,7 +209,16 @@ class AppConfig
     await readHWSpecs();
     await readLocalAppJson();
     await readGlobalAppJson();
+
+    await readDataBase();
   } 
+
+  void setUserNick(final String nick)
+  {
+    nickname = nick;
+  }
+
+  
 
 
 }
