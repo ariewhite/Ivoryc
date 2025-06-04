@@ -24,7 +24,7 @@ class AppLogger {
     }
     
     _logger = Logger(
-      printer: PrettyPrinter(),
+      printer: SimplePrinter(),
       output: CombinedOutput(logFile: _logFile),
     );
   }

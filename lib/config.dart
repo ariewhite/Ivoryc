@@ -147,9 +147,11 @@ class AppConfig
 
     } on AuthException catch (e) {
       AppLogger().i('Auth error ${e.message}');
+      nickname = 'empty';
       return false;
     } catch (e, s) {
       AppLogger().i('Auth error $e\n$s');
+      nickname = 'empty';
       return false;
     }
 

@@ -19,7 +19,6 @@ void main() async {
   
   AppLogger().i("Launcher started");
 
-  
   try {
     final response = await Supabase.instance.client.auth.getUser();
     final user = response.user;

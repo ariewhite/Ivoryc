@@ -4,6 +4,7 @@ import 'package:tester/config.dart';
 import 'package:tester/configs/styles/decoration/app_decoration.dart';
 import 'package:tester/configs/styles/text_styles/app_text_styles.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tester/launcher.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -183,10 +184,11 @@ class _LoginPageState extends State<LoginPage> {
           backgroundColor: Colors.white70,
       ),);
 
-      // Navigator.pushReplacement(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => BottomNavigation()),
-      // );
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => BottomNavigation()),
+      );
+
       return true; 
     } 
     on AuthException catch (e) {

@@ -6,6 +6,7 @@ import 'package:path/path.dart' as path;
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'package:tester/config.dart';
+import 'package:tester/services/task_manager/tast_manager.dart';
 
 class Update extends StatelessWidget
 {
