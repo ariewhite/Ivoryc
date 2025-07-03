@@ -29,6 +29,13 @@ class AppTextStyles {
         fontFamily: "Cascadia",
       );
 
+  static TextStyle h2white() => defaultStyle().copyWith(
+        color: AppColors.white,
+        fontSize: 24.0,
+        fontWeight: FontWeight.bold,
+        fontFamily: "Cascadia",
+      );
+
   static TextStyle h3() => defaultStyle().copyWith(
         color: AppColors.black,
         fontSize: 20.0,
@@ -142,6 +149,14 @@ class AppTextStyles {
   static TextStyle miniProfileTimeA() => miniProfileTime().copyWith(
         fontSize: 9.0,
         color: Colors.white54,
+      );
+
+  static TextStyle updateVersion() => defaultStyle().copyWith(
+        fontSize: 14.5,
+        fontWeight: FontWeight.normal,
+        fontFamily: 'Cascadia',
+        color: Colors.white,
+        letterSpacing: 1
       );
       
 }
