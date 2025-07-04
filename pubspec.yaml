@@ -37,6 +37,8 @@ dependencies:
   logger: ^2.5.0
   http: ^0.13.5
   path: ^1.8.3
+  dio: ^5.8.0+1
+  markdown_editor_plus: ^0.2.15
   flutter:
     sdk: flutter
 
@@ -45,6 +47,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   path_provider: ^2.1.5
   supabase_flutter: ^2.9.0
+  percent_indicator: ^4.2.5
 
 dev_dependencies:
   flutter_test:
@@ -110,6 +113,22 @@ flutter:
         - asset: assets/fonts/Roboto-Light.ttf
         - asset: assets/fonts/Roboto-Medium.ttf
         - asset: assets/fonts/Roboto-Regular.ttf
+    - family: Inter_24pt
+      fonts:
+        - asset: assets/fonts/Inter_24pt-Thin.ttf
+        - asset: assets/fonts/Inter_24pt-Light.ttf
+        - asset: assets/fonts/Inter_24pt-Medium.ttf
+        - asset: assets/fonts/Inter_24pt-Regular.ttf
+        - asset: assets/fonts/Inter_24pt-SemiBold.ttf
+    - family: Sf-pro
+      fonts:
+        - asset: assets/fonts/SF-Pro-Display-Ultralight.otf
+        - asset: assets/fonts/SF-Pro-Display-Bold.otf
+        - asset: assets/fonts/SF-Pro-Display-Medium.otf
+        - asset: assets/fonts/SF-Pro-Display-Regular.otf
+        - asset: assets/fonts/SF-Pro-Display-Thin.otf
+        - asset: assets/fonts/SF-Pro-Display-Semibold.otf
+
           
 
   #

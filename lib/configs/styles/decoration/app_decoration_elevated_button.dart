@@ -66,5 +66,25 @@ class _ElevatedButtonStyle
       ),
     );
   }
+
+  ButtonStyle transparent() 
+  {
+    return ButtonStyle(
+      backgroundColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.disabled)) return Colors.transparent;
+        if (states.contains(WidgetState.hovered)) return Colors.white10;
+        return Colors.transparent;
+      }),
+      foregroundColor: WidgetStateProperty.all(Colors.white),
+      minimumSize: WidgetStateProperty.all(const Size(180.0, 55.0)),
+      padding: WidgetStateProperty.all(const EdgeInsets.symmetric(vertical: 14)),
+      shape: WidgetStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+          side: const BorderSide(color: Colors.white, width: 2),
+        ),
+      )
+    );
+  }
  
 }

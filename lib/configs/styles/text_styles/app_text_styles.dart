@@ -2,8 +2,10 @@
 
 import 'package:tester/configs/styles/colors/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 
 part 'app_text_styles_button.dart';
+part 'app_markdown_styles.dart';
 
 class AppTextStyles {
   const AppTextStyles._();
@@ -34,6 +36,14 @@ class AppTextStyles {
         fontSize: 24.0,
         fontWeight: FontWeight.bold,
         fontFamily: "Cascadia",
+      );
+  static TextStyle h2whiteInter() => defaultStyle().copyWith(
+        color: AppColors.white,
+        fontSize: 24.0,
+        fontWeight: FontWeight.w400,
+        fontFamily: "Sf-pro",
+        letterSpacing: 1,
+        
       );
 
   static TextStyle h3() => defaultStyle().copyWith(
@@ -153,10 +163,10 @@ class AppTextStyles {
 
   static TextStyle updateVersion() => defaultStyle().copyWith(
         fontSize: 14.5,
-        fontWeight: FontWeight.normal,
-        fontFamily: 'Cascadia',
+        fontWeight: FontWeight.w300,
+        fontFamily: 'Sf-pro',
         color: Colors.white,
-        letterSpacing: 1
+        letterSpacing: 0.6
       );
       
 }
