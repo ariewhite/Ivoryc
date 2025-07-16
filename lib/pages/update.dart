@@ -79,32 +79,28 @@ class _UpdateState extends State<Update> {
               nick: AppConfig.instance.nickname,
             ),
           ),
+
           // version frame
           Align(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(30.0, 100.0, 0.0, 0.0),
-              child: Container(
-                width: 550,
-                height: 200,
-                color: Colors.black12,
-                child: Row(
-                  children: [
-                    Container(color: Colors.white, width: 2),
-                    const SizedBox(width: 20),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Versions:", style: AppTextStyles.h2whiteInter()),
-                        const SizedBox(height: 10),
-                        Text(
-                          "Local: ${AppConfig.instance.appVersion}\nGlobal: ${AppConfig.instance.gAppVersion}",
-                          style: AppTextStyles.updateVersion(),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+              padding: const EdgeInsets.fromLTRB(30.0, 100.0, 100.0, 600.0),
+              child: Row(
+                children: [
+                  Container(color: Colors.white, width: 2),
+                  const SizedBox(width: 20),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Versions:", style: AppTextStyles.h2whiteInter()),
+                      const SizedBox(height: 10),
+                      Text(
+                        "Local: ${AppConfig.instance.appVersion}\nGlobal: ${AppConfig.instance.gAppVersion}",
+                        style: AppTextStyles.updateVersion(),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),
@@ -175,7 +171,7 @@ class _UpdateState extends State<Update> {
                 color: Colors.black12,
                 alignment: Alignment.topLeft,
                 width: 650,
-                height: 400,
+                height: 350,
                 child: Row(
                   children: [
                     // slider
@@ -212,7 +208,7 @@ class _UpdateState extends State<Update> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 150.0),
+              padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 115.0),
               child:  ElevatedButton(
               onPressed: downloadFileFromServer, 
               child: Text(

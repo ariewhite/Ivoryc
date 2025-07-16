@@ -20,9 +20,6 @@ class _SettingsState extends State<Settings> {
   String javaPath = "";
   String javaArgs = "";
 
-  // final TextEditingController _javaPathController = TextEditingController();
-  final List<String> resolutions = ["800x600", "1280x720", "1920x1080", "2560x1440"];
-
   
   void _loadMaxRam() async {
     setState(() {
@@ -86,29 +83,6 @@ class _SettingsState extends State<Settings> {
                       style: const TextStyle(color: Colors.white, fontSize: 16, fontFamily: 'Cascadia'),
                     ),
                   ],
-                ),
-                _buildTitle("Разрешение экрана"),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(
-                    color: Colors.transparent, //background
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: DropdownButton<String>(
-                    value: resolution,
-                    items: resolutions.map((res) {
-                      return DropdownMenuItem(
-                        value: res,
-                        child: Text(
-                          res,
-                          style: const TextStyle(color: Colors.white), // text
-                        ),
-                      );
-                    }).toList(),
-                    onChanged: (value) => setState(() => resolution = value!),
-                    dropdownColor: Colors.black54,  // dropdown background
-                    underline: const SizedBox(), 
-                  ),
                 ),
                 _buildTitle("Путь до Java"),
                 Row(
